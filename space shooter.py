@@ -43,7 +43,15 @@ while True:
         printlines()
         movelinesdown()
         moveup()
+        if pos == 44 or pos == 46 or pos == 48 or pos == 50 or pos == 52 or pos == 54 or pos == 56:
+            pos += 2
+        if pos == 58:
+            pos -= 1
+        if pos == 43:
+            pos += 1
+        if pos == 57 or pos == 55 or pos == 53 or pos == 51 or pos == 49 or pos == 47 or pos == 45:
+            pos -= 2
     except:
-        line1 = addarrow(50,line1)
+        line1 = addarrow(pos,line1)
     
     
