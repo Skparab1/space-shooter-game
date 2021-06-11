@@ -1,6 +1,6 @@
 # space-shooter-game
 - a space shooter game, in which the user has to shoot at and hit incoming spaceships with balls
-# Space sooter game demo
+# Space shooter game demo
 ![](space_shooter_demo.gif)
 # what works so far
 - animating of shooter moving, balls, and arrows
