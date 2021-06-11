@@ -117,3 +117,4 @@ while True:
             balls -= 1
             score -= 1
 print('you have lost')
+print('Your score was: ',score)
