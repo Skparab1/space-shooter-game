@@ -1,5 +1,6 @@
 # space shooter
 import time, random
+from random import randint
 def printlines():
     global balls,pos,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12,line13,line14,line15,line16,line17,line18
     print(line18[1:100]),print(line17[1:100]),print(line16[1:100]),print(line15[1:100]),print(line14[1:100]),print(line13[1:100]),print(line12[1:100]),print(line11[1:100]),print(line10[1:100]),print(line9[1:100]),print(line8[1:100]),print(line7[1:100]),print(line6[1:100]),print(line5[1:100]),print(line4[1:100]),print(line3[1:100]),print(line2[1:100]),print(line1[1:100])
@@ -7,7 +8,6 @@ def printlines():
     print(' '*pos,' ||')
     print(' '*pos,'<||>')
     print(' '*pos,'<__>')
-    print('balls: ',balls)
 def removeballs():
     global balls,pos,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12,line13,line14,line15,line16,line17,line18
     line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12,line13,line14,line15,line16,line17,line18 = line1.replace('-',' '),line2.replace('-',' '),line3.replace('-',' '),line4.replace('-',' '),line5.replace('-',' '),line6.replace('-',' '),line7.replace('-',' '),line8.replace('-',' '),line9.replace('-',' '),line10.replace('-',' '),line11.replace('-',' '),line12.replace('-',' '),line13.replace('-',' '),line14.replace('-',' '),line15.replace('-',' '),line16.replace('-',' '),line17.replace('-',' '),line18.replace('-',' ')
@@ -54,13 +54,22 @@ def moveup():
     line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12,line13,line14,line15,line16,line17,line18 = (ra(line1) if b1 == True else line1),(addarrow(arrowpos,line2) if b1 == True else (ra(line2) if b2 == True else line2)),(addarrow(arrowpos,line3) if b2 == True else (ra(line3) if b3 == True else line3)),(addarrow(arrowpos,line4) if b3 == True else (ra(line4) if b4 == True else line4)),(addarrow(arrowpos,line5) if b4 == True else (ra(line5) if b5 == True else line5)),(addarrow(arrowpos,line6) if b5 == True else (ra(line6) if b6 == True else line6)),(addarrow(arrowpos,line7) if b6 == True else (ra(line7) if b7 == True else line7)),(addarrow(arrowpos,line8) if b7 == True else (ra(line8) if b8 == True else line8)),(addarrow(arrowpos,line9) if b8 == True else (ra(line9) if b9 == True else line9)),(addarrow(arrowpos,line10) if b9 == True else (ra(line10) if b10 == True else line10)),(addarrow(arrowpos,line11) if b10 == True else (ra(line11) if b11 == True else line11)),(addarrow(arrowpos,line12) if b11 == True else (ra(line12) if b12 == True else line12)),(addarrow(arrowpos,line13) if b12 == True else (ra(line13) if b13 == True else line13)),(addarrow(arrowpos,line14) if b13 == True else (ra(line14) if b14 == True else line14)),(addarrow(arrowpos,line15) if b14 == True else (ra(line15) if b15 == True else line15)),(addarrow(arrowpos,line16) if b15 == True else (ra(line16) if b16 == True else line16)),(addarrow(arrowpos,line17) if b16 == True else (ra(line17) if b17 == True else line17)),(addarrow(arrowpos,line18) if b17 == True else line18)
 line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12,line13,line14,line15,line16,line17,line18 = ' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,' '*100,((' '*50)+'-oo-'+(' '*49))
 pos = 50
-ballpos = 50
+ballpos = randint(45,55)
 arrowpos = 50
 balls = 25
 movedirection = 'right'
+alt = 0
+score = 10
+print('\n'*50)
+print('Space Shooter Game')
+print('How to play:')
+print('1. Press control c to fire a ball')
+print('2. You have 25 balls. you lose a ball when you fire it and gain 2 balls when you hit a spaceship')
+print('3. You lose when an asteroid hits you (or when you run out of balls because then you can\'t fire at the asteroid')
+input('press enter to begin')
 while True:
     try:
-        time.sleep(0.1)
+        time.sleep(0.07)
         if movedirection == 'right':
             pos += 1
             if pos == 55:
@@ -79,17 +88,32 @@ while True:
             removeballs()
             removeballs()
             removearrow()
-            line18 = addball(pos,line18)
-        movelinesdown()
-        moveup()
-        print(pos)
+            ballpos = randint(48,53)
+            line18 = addball(ballpos,line18)
+            balls += 2
+            score += 10
+        if alt == 1:
+            movelinesdown()
+            moveup()
+            alt = -1
+        if ballpos >= 53:
+            ballpos -= 1
+        elif ballpos <= 48:
+            ballpos += 1
+        elif randint(1,4) == 1:
+            blank = '' #ballpos = ballpos + (randint(-1,1))
+        print('Score: ',score)
+        print(balls, ' Balls: ','o'*balls)
+        #print(pos)
         #moveup()
         if '-oo-' in line1:
-            print('you have lost')
+            print('you have been hit')
             break
+        alt += 1
     except:
-        arrowpos = pos + 5
-        line1 = addarrow(arrowpos,line1)
-        balls -= 1
-    
-    
+        if balls > 0:
+            arrowpos = pos + 5
+            line1 = addarrow(arrowpos,line1)
+            balls -= 1
+            score -= 1
+print('you have lost')
