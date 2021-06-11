@@ -4,9 +4,9 @@
 - animating of shooter moving, balls, and arrows
 - seperate algorithms for moving ball up
 - shooting to add arrow
+- detects when ball is hit by an arrow
 # what is to be done
 - not changing the horizontal position of the obstacles
-- hitting target detection
 - randomized target position, direction and speed
 - scoring
 - scoreboard
