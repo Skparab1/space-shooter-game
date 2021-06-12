@@ -84,7 +84,7 @@ while True:
         lbb = line1 if ('-oo-' in line1 ) else (line1 if ('-oo-' in line2 ) else (line1 if ('-oo-' in line3 ) else (line2 if ('-oo-' in line4 ) else (line3 if ('-oo-' in line5 ) else (line4 if ('-oo-' in line6 ) else (line5 if ('-oo-' in line7 ) else (line6 if ('-oo-' in line8 ) else (line7 if ('-oo-' in line9 ) else (line8 if ('-oo-' in line10 ) else (line9 if ('-oo-' in line11 ) else (line10 if ('-oo-' in line12 ) else (line11 if ('-oo-' in line13 ) else (line12 if ('-oo-' in line14 ) else (line13 if ('-oo-' in line15 ) else (line14 if ('-oo-' in line16 ) else (line15 if ('-oo-' in line17 ) else (line16 if ('-oo-' in line18 ) else line18)))))))))))))))))
         #print(lb)
         #input(lbb)
-        if ('^' == lb[ballpos] or '^' == lb[ballpos+1] or '^' == lb[ballpos+2] or '^' == lb[ballpos+3] or '^' == lb[ballpos+4]) or ('^' == lbb[ballpos] or '^' == lbb[ballpos+1] or '^' == lbb[ballpos+2] or '^' == lbb[ballpos+3] or '^' == lb[ballpos+4]):
+        if ('^' == lb[ballpos] or '^' == lb[ballpos+1] or '^' == lb[ballpos+2] or '^' == lb[ballpos+3]) or ('^' == lbb[ballpos] or '^' == lbb[ballpos+1] or '^' == lbb[ballpos+2] or '^' == lbb[ballpos+3]):
             removeballs()
             removeballs()
             removearrow()
@@ -103,7 +103,7 @@ while True:
         elif randint(1,4) == 1:
             blank = '' #ballpos = ballpos + (randint(-1,1))
         print('Score: ',score)
-        print(balls, ' Balls: ','o'*balls)
+        print('You have ',balls, ' Arrows: ','^'*balls)
         #print(pos)
         #moveup()
         if '-oo-' in line1:
